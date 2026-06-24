@@ -59,6 +59,28 @@ Toggle with **⌘/Ctrl + `**. Add routes in `src/lib/devtools/routes.ts`. Dev bu
 
 See `CLAUDE.md` for the full directory map and conventions.
 
+## Deploy (Vercel)
+
+Hosted on Vercel: **https://acm-asteria.vercel.app**
+
+Auto-deploys via the connected GitHub repo — push to `main` ships production,
+any other branch / PR ships a preview. Config lives in `vercel.json`
+(`nextjs` framework, `sin1` region).
+
+Required env vars (set per scope in Vercel → Settings → Environment Variables):
+
+| Var                              | Value (prod)        |
+| -------------------------------- | ------------------- |
+| `AI_PROVIDER`                    | `gemini`            |
+| `GOOGLE_GENERATIVE_AI_API_KEY`   | _(secret)_          |
+| `GEMINI_MODEL`                   | `gemini-2.0-flash`  |
+| `NEXT_PUBLIC_SUPABASE_URL`       | hosted project URL  |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`  | publishable key     |
+
+`AI_PROVIDER=ollama` is local-only — Vercel must use `gemini`. Point Supabase
+at a hosted project (not `127.0.0.1`) and add the Vercel domain to Supabase
+Auth → URL Config.
+
 ## Team
 
 **Team Hague** — FEU Tech, Journey to Asteria Techsprint.
