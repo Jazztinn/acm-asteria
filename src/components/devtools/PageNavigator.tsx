@@ -37,8 +37,19 @@ export function PageNavigator() {
 
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 24, y: 24 });
+  const [viewport, setViewport] = useState({ w: 0, h: 0 });
   const dragRef = useRef<{ dx: number; dy: number } | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Live viewport (vw/vh) readout — updates on resize.
+  useEffect(() => {
+    function measure() {
+      setViewport({ w: window.innerWidth, h: window.innerHeight });
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   // Restore persisted state.
   useEffect(() => {
@@ -136,6 +147,12 @@ export function PageNavigator() {
           ×
         </button>
       </div>
+      <div style={viewportStyle}>
+        <span>viewport</span>
+        <span style={{ fontVariantNumeric: "tabular-nums" }}>
+          {viewport.w} × {viewport.h}px · 100vh = {viewport.h}px
+        </span>
+      </div>
       <ul style={listStyle}>
         {devRoutes.map((r) => {
           const active = r.path === pathname;
@@ -230,6 +247,17 @@ const itemStyle: React.CSSProperties = {
 const groupStyle: React.CSSProperties = {
   fontSize: 10,
   opacity: 0.5,
+  textTransform: "uppercase",
+};
+
+const viewportStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "6px 12px",
+  fontSize: 10,
+  opacity: 0.6,
+  borderBottom: "1px solid var(--border)",
   textTransform: "uppercase",
 };
 

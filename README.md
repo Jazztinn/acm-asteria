@@ -2,6 +2,8 @@
 
 The official submission of **Team Hague** at FEU Tech's Journey to Asteria Techsprint.
 
+[![Live on Vercel](https://img.shields.io/badge/Live-acm--asteria.vercel.app-000?logo=vercel)](https://acm-asteria.vercel.app)
+
 **Live:** https://acm-asteria.vercel.app
 
 Next.js + TypeScript app with Supabase (DB + Auth) and a floating page navigator.
