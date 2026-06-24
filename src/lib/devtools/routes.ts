@@ -9,8 +9,7 @@ export interface DevRoute {
 }
 
 export const devRoutes: DevRoute[] = [
-  { label: "Home / Chat", path: "/", group: "App" },
+  { label: "Home", path: "/", group: "App" },
   { label: "Sign In", path: "/login", group: "Auth" },
   { label: "Profile", path: "/profile", group: "App" },
-  { label: "API: Chat", path: "/api/chat", group: "API" },
 ];
