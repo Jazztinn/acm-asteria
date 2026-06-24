@@ -4,8 +4,9 @@ The official submission of **Team Hague** at FEU Tech's Journey to Asteria Techs
 
 **Live:** https://acm-asteria.vercel.app
 
-Next.js + TypeScript app with a unified AI layer (Gemini for prod, Ollama for offline testing),
-Supabase (DB + Auth), and a dev-only floating page navigator.
+Next.js + TypeScript app with Supabase (DB + Auth) and a floating page navigator.
+Ships a unified AI layer (Gemini / Ollama) as scaffolding — no chat UI wired right now.
+The root path `/` redirects to `/login`.
 
 ## Quick start
 
@@ -32,9 +33,10 @@ ollama pull llama3.2:3b  # https://ollama.com
 npm run dev           # http://localhost:3000
 ```
 
-## AI provider switch
+## AI provider switch (scaffold)
 
-Flip `AI_PROVIDER` in `.env.local`:
+The AI layer is present but not wired to any UI yet. When you build a feature on it,
+flip `AI_PROVIDER` in `.env.local`:
 
 - `ollama` → local Ollama daemon (`OLLAMA_MODEL`, default `llama3.2:3b`)
 - `gemini` → Google Generative AI (`GEMINI_MODEL`, default `gemini-2.0-flash`)
@@ -44,8 +46,12 @@ defined in `src/lib/ai/tools.ts`.
 
 ## Dev page navigator
 
-A floating, draggable menu (grid-snaps to 24px) for jumping between pages during development.
-Toggle with **⌘/Ctrl + `**. Add routes in `src/lib/devtools/routes.ts`. Dev builds only.
+A floating, draggable menu (grid-snaps to 24px) for jumping between pages.
+Toggle with **⌘/Ctrl + `**. Add routes in `src/lib/devtools/routes.ts`.
+
+Shown in all environments (including the Vercel demo) by default. To hide it: set
+`NEXT_PUBLIC_SHOW_DEVTOOLS=false` and redeploy, or delete `<DevTools />` in
+`src/app/layout.tsx`.
 
 ## Scripts
 
