@@ -24,7 +24,7 @@ npm run db:reset      # applies migrations + seed
 npm run db:types      # regenerates typed client
 
 # 4. Local AI (offline testing)
-ollama pull llama3.2  # https://ollama.com
+ollama pull llama3.2:3b  # https://ollama.com
 
 # 5. Run
 npm run dev           # http://localhost:3000
@@ -34,7 +34,7 @@ npm run dev           # http://localhost:3000
 
 Flip `AI_PROVIDER` in `.env.local`:
 
-- `ollama` → local Ollama daemon (`OLLAMA_MODEL`, default `llama3.2`)
+- `ollama` → local Ollama daemon (`OLLAMA_MODEL`, default `llama3.2:3b`)
 - `gemini` → Google Generative AI (`GEMINI_MODEL`, default `gemini-2.0-flash`)
 
 Both share one code path via `getModel()` in `src/lib/ai/provider.ts`, with tool-calling

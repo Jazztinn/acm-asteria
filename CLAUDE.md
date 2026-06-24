@@ -48,7 +48,7 @@ npm run db:reset                  # apply migrations + seed
 npm run db:types                  # regenerate src/types/database.types.ts
 
 # Local AI (offline)
-ollama pull llama3.2              # set AI_PROVIDER=ollama
+ollama pull llama3.2:3b           # set AI_PROVIDER=ollama
 
 npm run dev                       # http://localhost:3000
 ```
