@@ -2,6 +2,8 @@
 
 The official submission of **Team Hague** at FEU Tech's Journey to Asteria Techsprint.
 
+**Live:** https://acm-asteria.vercel.app
+
 Next.js + TypeScript app with a unified AI layer (Gemini for prod, Ollama for offline testing),
 Supabase (DB + Auth), and a dev-only floating page navigator.
 
